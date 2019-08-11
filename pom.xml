@@ -8,6 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>rabbitmq-demo</module>
+        <module>demo-app</module>
     </modules>
     <packaging>pom</packaging>
 

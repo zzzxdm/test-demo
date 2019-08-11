@@ -1,0 +1,10 @@
+#swagger
+swagger:
+  enable: true
+  host: zzzserver.com
+  version: 1.0.0
+  title: 接口文档
+  description: 描述
+  license: ZZZ
+  licenseUrl: http://zzzserver.com/8001/swagger-ui.html
+  termOfServiceUrl: http://zzzserver.com

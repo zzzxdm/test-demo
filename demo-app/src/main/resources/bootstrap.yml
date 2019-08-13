@@ -1,0 +1,15 @@
+#spring
+
+spring:
+  application:
+    name: demo-app
+  profiles:
+    active: dev
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 106.12.35.24:8848
+
+      config:
+        server-addr: 106.12.35.24:8848

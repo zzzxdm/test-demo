@@ -1,4 +1,6 @@
 #spring
+server:
+  host: 106.12.35.24
 
 spring:
   application:
@@ -13,3 +15,13 @@ spring:
 
       config:
         server-addr: 106.12.35.24:8848
+
+# elasticsearch配置
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: ${server.host}:9300
+  elasticsearch:
+      hostlist: ${server.host}:9200
+      rest:
+        uris: ["http://${server.host}:9200"]

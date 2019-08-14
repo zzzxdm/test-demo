@@ -1,5 +1,6 @@
 package com.zzz.demo;
 
+import com.alibaba.nacos.api.config.annotation.NacosConfigurationProperties;
 import com.zzz.demo.config.SwaggerConfig;
 import com.zzz.demo.entity.User;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan("com.zzz.demo.mapper")
+@NacosConfigurationProperties(dataId  = "demo-app.yml")
 public class TestDemoApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
     public static void main(String[] args) {

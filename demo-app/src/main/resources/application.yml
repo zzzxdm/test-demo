@@ -8,3 +8,8 @@ swagger:
   license: ZZZ
   licenseUrl: http://zzzserver.com/8001/swagger-ui.html
   termOfServiceUrl: http://zzzserver.com
+
+
+info.groupId: @project.groupId@
+info.artifactId: @project.artifactId@
+info.version: @project.version@

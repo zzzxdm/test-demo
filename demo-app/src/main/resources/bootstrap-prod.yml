@@ -6,7 +6,7 @@ spring:
   application:
     name: demo-app
   profiles:
-    active: dev
+    active: prod
 
   cloud:
     nacos:

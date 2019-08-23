@@ -1,0 +1,32 @@
+#spring
+server:
+  port: 8001
+  host: 106.12.35.24
+
+# elasticsearch配置
+spring:
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: ${server.host}:9300
+  elasticsearch:
+      hostlist: ${server.host}:9200
+      rest:
+        uris: ["http://${server.host}:9200"]
+
+  redis:
+    host: ${server.host}
+    database: 1
+    port: 6379
+    password: admin
+
+#swagger
+swagger:
+  enable: true
+  host: localhost
+  version: 1.0.0
+  title: 接口文档
+  description: 描述
+  license: ZZZ
+  licenseUrl: http://zzzserver.com/8001/swagger-ui.html
+  termOfServiceUrl: http://zzzserver.com

@@ -1,4 +1,4 @@
-package com.zzz.producer;
+package com.zzz;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

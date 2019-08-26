@@ -1,4 +1,4 @@
-package com.zzz.consumer.utils;
+package com.zzz.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;

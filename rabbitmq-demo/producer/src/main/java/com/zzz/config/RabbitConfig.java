@@ -20,14 +20,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import static com.zzz.demo.MQConstant.EXCHANGE_DIRECT;
-import static com.zzz.demo.MQConstant.EXCHANGE_FANOUT;
-import static com.zzz.demo.MQConstant.EXCHANGE_TOPIC;
-import static com.zzz.demo.MQConstant.QUEUE_A;
-import static com.zzz.demo.MQConstant.QUEUE_B;
-import static com.zzz.demo.MQConstant.QUEUE_C;
-import static com.zzz.demo.MQConstant.ROUTINGKEY_A;
-import static com.zzz.demo.MQConstant.ROUTINGKEY_B;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_DIRECT;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_FANOUT;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_TOPIC;
+import static com.zzz.demo.constant.MQConstant.QUEUE_A;
+import static com.zzz.demo.constant.MQConstant.QUEUE_B;
+import static com.zzz.demo.constant.MQConstant.QUEUE_C;
+import static com.zzz.demo.constant.MQConstant.QUEUE_ONE;
+import static com.zzz.demo.constant.MQConstant.QUEUE_TWO;
+import static com.zzz.demo.constant.MQConstant.ROUTINGKEY_A;
+import static com.zzz.demo.constant.MQConstant.ROUTINGKEY_B;
 
 @Configuration
 public class RabbitConfig {
@@ -113,8 +115,13 @@ public class RabbitConfig {
     }
 
     @Bean
-    public Queue queueAnon() {
-        return new Queue(null, true);
+    public Queue queueOne() {
+        return new Queue(QUEUE_ONE, true); //队列持久
+    }
+
+    @Bean
+    public Queue queueTwo() {
+        return new Queue(QUEUE_TWO, true); //队列持久
     }
 
     @Bean
@@ -134,10 +141,17 @@ public class RabbitConfig {
         return BindingBuilder.bind(queueC()).to(fanoutExchange());
     }
 
+
     @Bean
-    public Binding bindingAnon() {
+    public Binding bindingOne() {
         // fanout不需要routing key
-        return BindingBuilder.bind(queueAnon()).to(fanoutExchange());
+        return BindingBuilder.bind(queueOne()).to(fanoutExchange());
+    }
+
+    @Bean
+    public Binding bindingTwo() {
+        // fanout不需要routing key
+        return BindingBuilder.bind(queueTwo()).to(fanoutExchange());
     }
 
 

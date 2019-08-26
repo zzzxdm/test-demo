@@ -6,7 +6,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-import static com.zzz.demo.MQConstant.QUEUE_A;
+import static com.zzz.demo.constant.MQConstant.QUEUE_A;
 
 @Component
 @RabbitListener(queues = QUEUE_A)

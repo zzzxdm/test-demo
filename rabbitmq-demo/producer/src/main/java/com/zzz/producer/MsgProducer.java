@@ -9,11 +9,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-import static com.zzz.demo.MQConstant.EXCHANGE_DIRECT;
-import static com.zzz.demo.MQConstant.EXCHANGE_FANOUT;
-import static com.zzz.demo.MQConstant.EXCHANGE_TOPIC;
-import static com.zzz.demo.MQConstant.ROUTINGKEY_A;
-import static com.zzz.demo.MQConstant.ROUTINGKEY_B;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_DIRECT;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_FANOUT;
+import static com.zzz.demo.constant.MQConstant.EXCHANGE_TOPIC;
+import static com.zzz.demo.constant.MQConstant.ROUTINGKEY_A;
+import static com.zzz.demo.constant.MQConstant.ROUTINGKEY_B;
 
 @Component
 public class MsgProducer implements RabbitTemplate.ConfirmCallback {

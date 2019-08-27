@@ -8,12 +8,14 @@ import com.zzz.demo.intf.impl.ParllelStream;
 import com.zzz.demo.intf.impl.Stream;
 import com.zzz.demo.mapper.UserMapper;
 import com.zzz.demo.service.RedissonService;
+import com.zzz.demo.utils.RedisUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StopWatch;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/test")
@@ -41,10 +47,16 @@ public class TestController {
     private RedissonService redissonService;
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private StringRedisTemplate stringRedisTemplate;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Autowired
     private RedissonClient redissonClient;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @ApiOperation("Test Hello")
     @GetMapping("/hello")
@@ -66,8 +78,7 @@ public class TestController {
         return userInfo;
     }
 
-    @ApiOperation("")
-    @RequestMapping("/testSelect")
+    @GetMapping("/testSelect")
     public List<User> testSelect() {
         System.out.println(("----- selectAll method test ------"));
         List<User> userList = userMapper.selectList(null);
@@ -94,14 +105,45 @@ public class TestController {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         for (int i = 0; i < 1000; i++) {
-            redisTemplate.opsForHash().put("test", "name" + i, "test" + i);
+            stringRedisTemplate.opsForHash().put("test", "name" + i, "test" + i);
         }
-        Set<Object> test = redisTemplate.opsForHash().keys("test");
+        Set<Object> test = stringRedisTemplate.opsForHash().keys("test");
         for (Object key : test) {
-            Object test1 = redisTemplate.opsForHash().get("test", key);
+            Object test1 = stringRedisTemplate.opsForHash().get("test", key);
 //            System.out.println(test1);
         }
         stopWatch.stop();
         System.out.printf("执行耗时:%fS", stopWatch.getTotalTimeSeconds());
     }
+
+
+    @GetMapping("/lockTest")
+    public void lockTest() {
+        int threadCount = 20;
+        ExecutorService executorService = Executors.newFixedThreadPool(threadCount);
+        for (int i = 0; i < threadCount; i++) {
+            executorService.execute(() -> {
+                String uuid = UUID.randomUUID().toString();
+                String lockKey = "LockTest.testLock";
+                try {
+                    boolean lock = redisUtil.getLock(lockKey, uuid);
+                    Object value = redisTemplate.opsForValue().get(lockKey);
+                    System.out.println(value);
+                    String name = Thread.currentThread().getName();
+                    if (lock) {
+                        System.out.println("线程: " + name + " 获取锁成功");
+                    } else {
+                        System.err.println("线程: " + name + " 获取锁失败");
+                    }
+                    TimeUnit.SECONDS.sleep(1);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    redisUtil.releaseLock(lockKey, uuid);
+                }
+            });
+        }
+        executorService.shutdown();
+    }
+
 }

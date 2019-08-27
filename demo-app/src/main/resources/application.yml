@@ -1,7 +1,7 @@
 #swagger
 swagger:
   enable: true
-  host: zzzserver.com
+  host: localhost
   version: 1.0.0
   title: 接口文档
   description: 描述

@@ -1,0 +1,44 @@
+[
+  {
+    "id": "path1",
+    "predicates": [
+      {
+        "name": "Path",
+        "args": {
+          "_genkey_0": "/baidu"
+        }
+      }
+    ],
+    "filters": [
+      {
+        "name": "StripPrefix",
+        "args": {
+          "_genkey_0": "1"
+        }
+      }
+    ],
+    "uri": "https://www.baidu.com/",
+    "order": 0
+  },
+  {
+    "id": "path2",
+    "predicates": [
+      {
+        "name": "Path",
+        "args": {
+          "_genkey_0": "/sina"
+        }
+      }
+    ],
+    "filters": [
+      {
+        "name": "StripPrefix",
+        "args": {
+          "_genkey_0": "1"
+        }
+      }
+    ],
+    "uri": "https://www.sina.com.cn/",
+    "order": 0
+  }
+]

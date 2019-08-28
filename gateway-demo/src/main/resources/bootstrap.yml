@@ -1,0 +1,33 @@
+# nacos
+spring:
+  application:
+    name: gateway-demo
+  cloud:
+    nacos:
+      config:
+        server-addr: 106.12.35.24:8848
+#        shared-dataids: yunrong-common.properties
+#        refreshable-dataids: yunrong-common.properties
+      discovery:
+        server-addr: 106.12.35.24:8848
+
+#    gateway:
+#          routes:
+#          - id: path1
+#            uri: https://www.baidu.com/
+#            filters:
+#              - StripPrefix=1
+#            predicates:
+#              - Path=/baidu
+#          - id: path2
+#            uri: https://www.sina.com.cn/
+#            filters:
+#              - StripPrefix=1
+#            predicates:
+#              - Path=/sina
+
+nacos:
+  address: 106.12.35.24:8848
+  data-id: gateway-demo
+  group-id: DEFAULT_GROUP
+  timeout: 5000

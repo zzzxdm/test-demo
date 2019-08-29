@@ -6,25 +6,37 @@ spring:
     nacos:
       config:
         server-addr: 106.12.35.24:8848
-#        shared-dataids: yunrong-common.properties
-#        refreshable-dataids: yunrong-common.properties
+        fileExtension: yml
+        refreshable-dataids: gateway-demo.yml
       discovery:
         server-addr: 106.12.35.24:8848
 
-#    gateway:
-#          routes:
-#          - id: path1
-#            uri: https://www.baidu.com/
-#            filters:
-#              - StripPrefix=1
-#            predicates:
-#              - Path=/baidu
-#          - id: path2
-#            uri: https://www.sina.com.cn/
-#            filters:
-#              - StripPrefix=1
-#            predicates:
-#              - Path=/sina
+  gateway:
+      routes:
+      - id: path1
+        uri: https://www.baidu.com/
+        filters:
+          - StripPrefix=1
+        predicates:
+          - Path=/baidu
+      - id: path2
+        uri: https://www.sina.com.cn/
+        filters:
+          - StripPrefix=1
+        predicates:
+          - Path=/sina
+      - id: path3
+        uri: lb://gateway-demo
+        filters:
+          - StripPrefix=1
+        predicates:
+          - Path=/api/**
+      - id: path4
+        uri: http://zzztech.vip:8848/nacos
+        filters:
+          - StripPrefix=0
+        predicates:
+          - Path=/nacos
 
 nacos:
   address: 106.12.35.24:8848

@@ -10,13 +10,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.cloud.gateway.route.RouteDefinition;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.Executor;
 
 @Slf4j
-@Component
+//@Component
 public class DynamicRouteServiceImplByNacos implements CommandLineRunner {
 
     @Autowired

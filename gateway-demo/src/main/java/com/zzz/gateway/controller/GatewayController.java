@@ -10,6 +10,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author ZZZ
@@ -28,7 +29,17 @@ public class GatewayController {
     @GetMapping("/test2")
     public Flux<List> test2() {
         List<String> arrayList = Lists.newArrayList("test1", "test2");
+        try {
+            TimeUnit.SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Flux.just(arrayList);
+    }
+
+    @GetMapping("/fallback")
+    private Flux<String> fallback() {
+        return Flux.just("sorry, have something wrong here");
     }
 
 

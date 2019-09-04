@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 public class App {
     public static void main(String[] args) {
         Elevator elevator1 = new Elevator(1);
-        Command command = new Run(elevator1, 5);
+        Command command = new Run(elevator1);
         int count = 10;
         ExecutorService executorService = Executors.newFixedThreadPool(count);
         new Thread(() -> {

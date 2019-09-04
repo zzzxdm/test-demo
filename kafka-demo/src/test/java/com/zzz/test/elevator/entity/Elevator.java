@@ -5,6 +5,8 @@ import com.zzz.test.elevator.constant.Status;
 import jodd.util.collection.SortedArrayList;
 import lombok.Data;
 
+import java.util.Comparator;
+
 @Data
 public class Elevator {
 
@@ -30,6 +32,6 @@ public class Elevator {
         this.maxFloor = ElevatorConstant.MAX_FLOOR;
         this.minFloor = ElevatorConstant.MIN_FLOOR;
         upNode = new SortedArrayList();
-        downNode = new SortedArrayList();
+        downNode = new SortedArrayList((Comparator<Integer>) (o1, o2) -> o2 - o1);
     }
 }

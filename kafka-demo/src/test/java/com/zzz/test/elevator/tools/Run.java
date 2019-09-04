@@ -13,11 +13,13 @@ public class Run extends AbstractExecutor {
 
     private volatile int floor;
 
+    public Run(Elevator elevator) {
+        super(elevator);
+    }
+
     public Run(Elevator elevator, int floor) {
         super(elevator);
         this.floor = floor;
-
-
     }
 
     @Override
@@ -67,9 +69,9 @@ public class Run extends AbstractExecutor {
                 // up
                 up(elevator);
             }
-            // reset
-            reset(elevator);
         }
+        // reset
+        reset(elevator);
     }
 
     private void reset(Elevator elevator) {

@@ -43,4 +43,10 @@ public class CourrentTest {
         return Thread.currentThread().getName();
     }
 
+
+    @Test
+    public void lockTest() {
+
+    }
+
 }

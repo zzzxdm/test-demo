@@ -8,10 +8,16 @@ import org.apache.commons.collections.CollectionUtils;
 
 import java.util.Iterator;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReadWriteLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class Run extends AbstractExecutor {
 
     private volatile int floor;
+    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    Lock readLock = this.lock.readLock();
+    Lock writeLock = this.lock.writeLock();
 
     public Run(Elevator elevator) {
         super(elevator);
@@ -24,7 +30,9 @@ public class Run extends AbstractExecutor {
 
     @Override
     public void add(int floor) {
+        writeLock.lock();
         this.floor = floor;
+        writeLock.unlock();
         Elevator elevator = super.getElevator();
         checkFloor(floor);
         // in current floor

@@ -11,6 +11,7 @@
         <module>demo-app</module>
         <module>kafka-demo</module>
         <module>es-demo</module>
+        <module>exam-collect</module>
     </modules>
     <packaging>pom</packaging>
 

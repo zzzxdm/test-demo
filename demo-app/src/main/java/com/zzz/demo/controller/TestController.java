@@ -15,6 +15,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.util.StopWatch;
@@ -57,6 +58,14 @@ public class TestController {
 
     @Autowired
     private RedisUtil redisUtil;
+
+    private static Environment environment;
+
+
+    public TestController(Environment environment) {
+        TestController.environment = environment;
+        System.err.println(TestController.environment);
+    }
 
     @ApiOperation("Test Hello")
     @GetMapping("/hello")

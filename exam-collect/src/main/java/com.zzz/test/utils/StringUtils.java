@@ -4,12 +4,16 @@ public class StringUtils {
 
     /**
      * 字符串替换
+     *
      * @param source
      * @param target
      * @param replaceStr
      * @return
      */
     public static String replace(String source, String target, String replaceStr) {
+        if (source == null || target == null || replaceStr == null) {
+            return source;
+        }
         int index = indexOf(source, target);
         if (index == -1 || target.equals(replaceStr)) {
             return source;
@@ -41,7 +45,8 @@ public class StringUtils {
      * @return
      */
     public static int indexOf(String source, String target) {
-        if (source.length() < target.length()) {
+        if ((source == null || target == null)
+                || source.length() < target.length()) {
             return -1;
         }
         char[] sourceArr = source.toCharArray();
@@ -72,5 +77,6 @@ public class StringUtils {
         System.out.println(indexOf(source, target));
         source = replace(source, target, "cd");
         System.out.println(source);
+        System.out.println(indexOf(null, ""));
     }
 }

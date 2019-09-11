@@ -1,4 +1,4 @@
-package com.zzz.producer;
+package com.zzz.consumer;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;

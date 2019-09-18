@@ -2,6 +2,8 @@ package com.zzz.gateway.controller;
 
 import com.google.common.collect.Lists;
 import com.zzz.gateway.bean.DynamicRouteServiceImpl;
+import com.zzz.gateway.service.IDemoService;
+import com.zzz.gateway.service.ITestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +21,11 @@ import java.util.concurrent.TimeUnit;
  */
 @RestController
 public class GatewayController {
+
+    @Autowired
+    private IDemoService demoService;
+    @Autowired
+    private ITestService testService;
 
     @GetMapping("/test1")
     public Mono<String> test1() {
@@ -50,4 +57,17 @@ public class GatewayController {
     public Flux<RouteDefinition> routes() {
         return dynamicRouteService.getRouteDefinitions();
     }
+
+
+    @GetMapping("/hello")
+    public String helloWorld() {
+        return demoService.hello();
+    }
+
+    @GetMapping("/testSelect")
+    public List<Object> testSelect() {
+        return testService.testSelect();
+    }
+
+
 }

@@ -1,6 +1,7 @@
 package com.zzz.test.courrent_test;
 
 import org.junit.Test;
+import org.springframework.util.StopWatch;
 
 import java.util.Random;
 import java.util.concurrent.CountDownLatch;
@@ -23,9 +24,12 @@ public class CourrentTest {
                     int timeout = random.nextInt(5);
                     String threadName = getThreadName();
                     System.out.println(threadName + "准备跑了，先休息" + timeout + "秒");
+                    StopWatch stopWatch = new StopWatch();
+                    stopWatch.start();
                     begin.await();
                     TimeUnit.SECONDS.sleep(timeout);
-                    System.out.println(threadName + "跑完了");
+                    stopWatch.stop();
+                    System.out.println(threadName + "跑完了，耗时:" + stopWatch.getTotalTimeSeconds() + "秒");
                     end.countDown();
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Set;
@@ -70,6 +71,11 @@ public class TestController {
     @ApiOperation("Test Hello")
     @GetMapping("/hello")
     public String helloWorld() {
+        RestTemplate restTemplate = new RestTemplate();
+//        String url = "http://39.96.194.226:8001/test/hello";
+        String url = "http://localhost:8002/test/hello";
+        String result = restTemplate.getForObject(url, String.class);
+        System.out.println(result);
         return "Hello World";
     }
 

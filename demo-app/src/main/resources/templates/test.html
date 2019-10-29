@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spring Boot FreeMarker</title>
+</head>
+<body>
+
+<center>
+    <input id="title" type="button" value="Cors Test">
+</center>
+
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#title').click(function () {
+        $.ajax({
+            url: "http://127.0.0.1:8002/test/hello",
+            type: "GET",
+            data: {
+                name: "访问8002端口测试跨域"
+            },
+            success: function (data, status, xhr) {
+                alert(data)
+                console.log(status);
+                console.log(xhr);
+                console.log(data);
+            }
+        });
+    });
+</script>
+</body>
+</html>

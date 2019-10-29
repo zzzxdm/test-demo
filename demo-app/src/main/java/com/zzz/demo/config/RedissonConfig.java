@@ -16,8 +16,8 @@ public class RedissonConfig {
     @Bean
     public RedissonClient getRedisson() {
         Config config = new Config();
-        config.useClusterServers().addNodeAddress("redis://106.12.35.24:7000").setPassword("admin");
-//        config.useSingleServer().setAddress("redis://106.12.35.24:6379").setPassword("admin");
+//        config.useClusterServers().addNodeAddress("redis://106.12.35.24:7000").setPassword("admin");
+        config.useSingleServer().setAddress("redis://106.12.35.24:6379").setPassword("admin");
         return Redisson.create(config);
     }
 

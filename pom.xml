@@ -12,6 +12,7 @@
         <module>kafka-demo</module>
         <module>es-demo</module>
         <module>exam-collect</module>
+        <module>redis-demo</module>
     </modules>
     <packaging>pom</packaging>
 

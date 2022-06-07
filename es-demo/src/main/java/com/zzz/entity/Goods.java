@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 public class Goods {
 
     @Id
-    private Long id;
+    private String id;
 
     @Field(type = FieldType.Text)
     private String name;

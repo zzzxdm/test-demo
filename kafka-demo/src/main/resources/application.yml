@@ -1,16 +1,22 @@
 
 spring:
   kafka:
-    bootstrap-servers: 106.12.35.24:9092
+    bootstrap-servers: localhost:9092
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      properties:
+#        partitioner:
+#          class: com.zzz.config.CustomizePartitioner
     consumer:
-      group-id: test
+      group-id: defaultGroup
       enable-auto-commit: true
+      auto-offset-reset: earliest
       auto-commit-interval: 1000
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      missing-topics-fatal: false
 
 server:
   port: 8001

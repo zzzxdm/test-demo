@@ -1,6 +1,6 @@
 #spring
 server:
-  host: 106.12.35.24
+  host: localhost
 
 spring:
   application:

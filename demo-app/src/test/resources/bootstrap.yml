@@ -1,6 +1,6 @@
 #spring
 server:
-  host: 106.12.35.24
+  host: 106.64.72.59
 
 spring:
   application:

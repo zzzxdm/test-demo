@@ -23,7 +23,7 @@ public class ESController {
     @GetMapping("/addGood")
     public String addGood() {
         Goods goods = new Goods();
-        goods.setId(redisUtil.getUniqekey("goods"));
+        goods.setId(redisUtil.getUniquekey("goods"));
         goods.setCategory("零食");
         goods.setDesc("这是一本好书");
         goods.setName("JAVA编程思想");

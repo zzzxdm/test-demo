@@ -1,25 +1,25 @@
 #spring
 server:
   port: 8001
-  host: 106.12.35.24
+  host: 106.64.72.59
 
 # elasticsearch配置
 spring:
   data:
-    elasticsearch:
-      cluster-name: docker-cluster
-      cluster-nodes: ${server.host}:9300
+#    elasticsearch:
+#      cluster-name: docker-cluster
+#      cluster-nodes: ${server.host}:9300
 
   elasticsearch:
       hostlist: ${server.host}:9200
       rest:
         uris: ["http://${server.host}:9200"]
 
-  redis:
-    host: ${server.host}
-    database: 1
-    port: 6379
-    password: admin
+#  redis:
+#    host: ${server.host}
+#    database: 1
+#    port: 6379
+#    password: admin
 
 #swagger
 swagger:

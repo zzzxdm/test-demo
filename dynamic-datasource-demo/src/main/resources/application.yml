@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    master:
+      jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: root
+      password: admin
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave1:
+      jdbc-url: jdbc:mysql://localhost:3307/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: read   # 只读账户
+      password: admin
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    slave2:
+      jdbc-url: jdbc:mysql://192.168.102.36:3307/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+      username: read   # 只读账户
+      password: admin
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: dynamic-datasource-demo
+server:
+  port: 7070
+
+
+# 打印sql
+logging.level.com.cjs.example.mapper: debug
+mybatis-plus.mapper-locations: classpath*:**/*Mapper.xml
+mybatis-plus.type-aliases-package: com.cjs.example.entity
+
+#mongodb
+spring.data.mongodb.host: 192.168.10.173
+spring.data.mongodb.port: 27017
+spring.data.mongodb.database: test

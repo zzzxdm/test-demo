@@ -1,0 +1,5 @@
+spring:
+  elasticjob:
+    zookeeper:
+      server-lists: localhost:2181
+      namespace: demo-job

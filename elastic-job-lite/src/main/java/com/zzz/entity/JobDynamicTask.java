@@ -1,5 +1,6 @@
 package com.zzz.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
@@ -13,11 +14,11 @@ import java.util.Date;
  * @Version V1.0
  */
 @Data
-@TableName("jbo_dynamic_task")
+@TableName("job_dynamic_task")
 public class JobDynamicTask {
 
-    @TableId
-    Integer id;
+    @TableId(type = IdType.AUTO)
+    Long id;
 
     Integer isDelete;
 

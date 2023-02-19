@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.context.WebServerApplicationContext;
@@ -15,6 +16,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import java.util.HashMap;
 
 @SpringBootApplication
 @EnableDiscoveryClient
@@ -24,6 +27,13 @@ public class TestDemoApplication extends SpringBootServletInitializer implements
 
     public static void main(String[] args) {
         SpringApplication.run(TestDemoApplication.class, args);
+        new SpringApplicationBuilder()
+                .main(TestDemoApplication.class)
+                .web(WebApplicationType.SERVLET)
+                .properties(new HashMap<String, Object>(){{
+                    put("spring.actives.profile", "dev");
+                }})
+                .build();
     }
 
     @Override

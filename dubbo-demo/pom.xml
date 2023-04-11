@@ -12,8 +12,8 @@
     <artifactId>dubbo-demo</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>consumer1</module>
-        <module>provider</module>
+<!--        <module>consumer1</module>-->
+<!--        <module>provider</module>-->
     </modules>
 
     <properties>

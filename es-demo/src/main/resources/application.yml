@@ -1,28 +1,25 @@
 #spring
 server:
   port: 8001
-  host: 192.168.95.132
-  es_port: 30080
+  host: localhost
 
 # elasticsearch配置
 spring:
   data:
-    elasticsearch:
-      cluster-name: k8s-es-cluster
-      cluster-nodes: ${server.host}:30070
-      repositories:
-        enabled: true
+#    elasticsearch:
+#      cluster-name: docker-cluster
+#      cluster-nodes: ${server.host}:9300
 
   elasticsearch:
-      hostlist: ${server.host}:${server.es_port}
+      hostlist: ${server.host}:9200
       rest:
-        uris: ["http://${server.host}:${server.es_port}"]
+        uris: ["http://${server.host}:9200"]
 
-  redis:
-    host: localhost
-    database: 1
-    port: 6379
-    password:
+#  redis:
+#    host: ${server.host}
+#    database: 1
+#    port: 6379
+#    password: admin
 
 #swagger
 swagger:

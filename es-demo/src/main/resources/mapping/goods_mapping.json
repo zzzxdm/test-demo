@@ -1,6 +1,9 @@
 {
-  "doc": {
+  "mappings": {
     "properties": {
+      "_class" : {
+        "type" : "keyword",
+      },
       "addTime": {
         "type": "long"
       },

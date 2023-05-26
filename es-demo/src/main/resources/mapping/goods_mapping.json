@@ -1,46 +1,44 @@
 {
-  "mappings": {
-    "properties": {
-      "_class" : {
-        "type" : "keyword",
+  "properties": {
+    "_class": {
+      "type": "keyword"
+    },
+    "addTime": {
+      "type": "long"
+    },
+    "category": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
       },
-      "addTime": {
-        "type": "long"
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_smart"
+    },
+    "desc": {
+      "type": "text",
+      "fields": {
+        "keyword": {
+          "type": "keyword",
+          "ignore_above": 256
+        }
       },
-      "category": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        },
-        "analyzer": "ik_max_word",
-        "search_analyzer": "ik_smart"
-      },
-      "desc": {
-        "type": "text",
-        "fields": {
-          "keyword": {
-            "type": "keyword",
-            "ignore_above": 256
-          }
-        },
-        "analyzer": "ik_max_word",
-        "search_analyzer": "ik_smart"
-      },
-      "id": {
-        "type": "long"
-      },
-      "inventory": {
-        "type": "long"
-      },
-      "name": {
-        "type": "text"
-      },
-      "price": {
-        "type": "float"
-      }
+      "analyzer": "ik_max_word",
+      "search_analyzer": "ik_smart"
+    },
+    "id": {
+      "type": "long"
+    },
+    "inventory": {
+      "type": "long"
+    },
+    "name": {
+      "type": "text"
+    },
+    "price": {
+      "type": "float"
     }
   }
 }

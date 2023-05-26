@@ -39,7 +39,7 @@ spring:
 
 
 server:
-  port: 8000
+  port: 8100
   # 下面这个参数是为解决问题而新增的
   max-http-header-size: 809600
   servlet:
@@ -69,3 +69,23 @@ mybatis-plus:
     map-underscore-to-camel-case: true
     cache-enabled: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+
+
+# 监控配置
+management:
+  endpoint:
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  metrics:
+    export:
+      prometheus:
+        enabled: true

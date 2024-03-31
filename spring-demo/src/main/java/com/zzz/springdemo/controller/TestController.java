@@ -26,6 +26,7 @@ public class TestController {
 
     @RequestMapping("/test")
     public Result test() {
+        testService.testMultiThread();
         return Result.success("Just For Test");
     }
 

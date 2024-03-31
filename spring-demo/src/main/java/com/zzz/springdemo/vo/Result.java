@@ -21,7 +21,7 @@ public class Result<T> {
         return success("success", data);
     }
 
-    public static <T> Result error(String msg) {
+    public static Result error(String msg) {
         return Result.builder().code(500).msg(msg).build();
     }
 
